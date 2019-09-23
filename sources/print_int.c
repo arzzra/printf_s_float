@@ -6,24 +6,16 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:47:10 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/21 19:10:52 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/23 21:46:11 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_print_number(t_qualfrs *ql)
-{
-	if (ql->prcs == 0 && ql->num[0] == '0')
-		 return ;
-	else
-		ql->countchr += write(1, ql->num, ql->countnum);
-}
-
 void	ft_print_di_pos3(t_qualfrs *ql)
 {
-	t_flag *fl;
-	t_length *len;
+	t_flag		*fl;
+	t_length	*len;
 
 	fl = ql->flg;
 	len = ql->len;
@@ -34,11 +26,12 @@ void	ft_print_di_pos3(t_qualfrs *ql)
 	}
 	else
 		ft_print_space((ql->width - (ql->countnum + fl->plus)), ql);
-	if (fl->space > 0 && fl->plus == 0 && (ql->width < ql->countnum || ql->width <= ql->prcs))
+	if (fl->space > 0 && fl->plus == 0 && (ql->width < ql->countnum
+	|| ql->width <= ql->prcs))
 		ft_print_space(1, ql);
 	else if (fl->plus > 0)
 		ql->countchr += write(1, &PLUS, 1);
-	ft_print_zero((ql->prcs -  ql->countnum), ql);
+	ft_print_zero((ql->prcs - ql->countnum), ql);
 	ft_print_number(ql);
 }
 
@@ -51,9 +44,9 @@ void	ft_print_di_neg4(t_qualfrs *ql)
 
 void	ft_print_di_pos4(t_qualfrs *ql)
 {
-	t_flag *fl;
-	t_length *len;
-	int		plus;
+	t_flag		*fl;
+	t_length	*len;
+	int			plus;
 
 	fl = ql->flg;
 	len = ql->len;
@@ -62,17 +55,13 @@ void	ft_print_di_pos4(t_qualfrs *ql)
 		ft_print_space(1, ql);
 	if (fl->plus > 0)
 		ql->countchr += write(1, &PLUS, 1);
-	ft_print_zero((ql->prcs -  ql->countnum), ql);
+	ft_print_zero((ql->prcs - ql->countnum), ql);
 	ft_print_number(ql);
 }
 
-
 void	ft_print_di_2(t_qualfrs *ql)
 {
-	t_flag	*fl;
-
-	fl = ql->flg;
-	if (fl->minus)
+	if (ql->flg->minus)
 	{
 		if (ql->signum == -1)
 			ft_print_di_neg(ql);
@@ -81,7 +70,7 @@ void	ft_print_di_2(t_qualfrs *ql)
 	}
 	else
 	{
-		if (fl->zero && ql->prcs == -1)
+		if (ql->flg->zero && ql->prcs == -1)
 		{
 			if (ql->signum == -1)
 				ft_print_di_neg2(ql);
@@ -101,12 +90,8 @@ void	ft_print_di_2(t_qualfrs *ql)
 void	ft_print_di(t_qualfrs *ql)
 {
 	int		c;
-	t_flag	*fl;
-	t_length	*len;
 
-	fl = ql->flg;
-	len = ql->len;
-	if (len->l > 0 || len->h > 0)
+	if (ql->len->l > 0 || ql->len->h > 0)
 		ql->num = ft_sign_lenchoose(ql);
 	else
 	{
@@ -126,5 +111,5 @@ void	ft_print_di(t_qualfrs *ql)
 		else
 			ft_print_di_pos4(ql);
 	}
-	free (ql->num);
+	free(ql->num);
 }

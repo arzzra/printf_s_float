@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:29:49 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/16 16:07:03 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/23 21:50:51 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_print_sharp(t_qualfrs *ql)
 
 	fl = ql->flg;
 	if (ql->typs == TYPES[5] && fl->sharp)
-			ql->countchr += write(1, &ZERO, 1);
+		ql->countchr += write(1, &ZERO, 1);
 	else if (ql->num[0] != '0')
 	{
 		if (ql->typs == TYPES[7] && fl->sharp)
@@ -42,43 +42,43 @@ char	*ft_len_ox2(unsigned long long numb, t_qualfrs *ql)
 	{
 		z = (unsigned long int)numb;
 		if (ql->typs == TYPES[5])
-			return (ft_10_to_8((unsigned long long) z, ql));
+			return (ft_10_to_8((unsigned long long)z, ql));
 		else if (ql->typs == TYPES[7] || ql->typs == TYPES[8])
-			return (ft_10_to_16((unsigned long long) z, ql));
+			return (ft_10_to_16((unsigned long long)z, ql));
 	}
 	else if (ln->l == 2)
 	{
 		x = (unsigned long long int)numb;
 		if (ql->typs == TYPES[5])
-			return (ft_10_to_8((unsigned long long) x, ql));
+			return (ft_10_to_8((unsigned long long)x, ql));
 		else if (ql->typs == TYPES[7] || ql->typs == TYPES[8])
-			return (ft_10_to_16((unsigned long long) x, ql));
+			return (ft_10_to_16((unsigned long long)x, ql));
 	}
 	return (NULL);
 }
 
 char	*ft_len_ox(unsigned long long numb, t_qualfrs *ql)
 {
-	t_length	*ln;
+	t_length			*ln;
 	unsigned short int	z;
-	unsigned char	x;
+	unsigned char		x;
 
 	ln = ql->len;
 	if (ln->h == 1)
 	{
 		z = (unsigned short int)numb;
 		if (ql->typs == TYPES[5])
-			return (ft_10_to_8((unsigned long long) z, ql));
+			return (ft_10_to_8((unsigned long long)z, ql));
 		else if (ql->typs == TYPES[7] || ql->typs == TYPES[8])
-			return (ft_10_to_16((unsigned long long) z, ql));
+			return (ft_10_to_16((unsigned long long)z, ql));
 	}
 	else if (ln->h == 2)
 	{
 		x = (unsigned char)numb;
 		if (ql->typs == TYPES[5])
-			return (ft_10_to_8((unsigned long long) x, ql));
+			return (ft_10_to_8((unsigned long long)x, ql));
 		else if (ql->typs == TYPES[7] || ql->typs == TYPES[8])
-			return (ft_10_to_16((unsigned long long) x, ql));
+			return (ft_10_to_16((unsigned long long)x, ql));
 	}
 	else
 		return (ft_len_ox2(numb, ql));
@@ -89,8 +89,8 @@ void	ft_print_ox(t_qualfrs *ql)
 {
 	unsigned long long	numb;
 	unsigned int		c;
-	t_flag	*fl;
-	t_length	*len;
+	t_flag				*fl;
+	t_length			*len;
 
 	fl = ql->flg;
 	len = ql->len;
@@ -99,11 +99,11 @@ void	ft_print_ox(t_qualfrs *ql)
 		ql->num = ft_len_ox(numb, ql);
 	else
 	{
-		c =	(unsigned int)numb;
+		c = (unsigned int)numb;
 		if (ql->typs == TYPES[5])
-			ql->num = (void*)ft_10_to_8((unsigned long long) c, ql);
+			ql->num = (void*)ft_10_to_8((unsigned long long)c, ql);
 		else if (ql->typs == TYPES[7] || ql->typs == TYPES[8])
-			ql->num = (void*)ft_10_to_16((unsigned long long) c, ql);
+			ql->num = (void*)ft_10_to_16((unsigned long long)c, ql);
 	}
 	ft_print_ox2(ql);
 	free(ql->num);

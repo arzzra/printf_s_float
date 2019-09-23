@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 14:21:22 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/21 18:02:14 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/23 21:44:29 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,12 @@ void	ft_print_str_uni(t_qualfrs *ql)
 				ql->countchr += write(1, &c2, 1);
 		}
 	}
+}
+
+void	ft_print_number(t_qualfrs *ql)
+{
+	if (ql->prcs == 0 && ql->num[0] == '0')
+		return ;
+	else
+		ql->countchr += write(1, ql->num, ql->countnum);
 }

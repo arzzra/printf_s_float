@@ -6,15 +6,15 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 16:43:28 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/08/19 20:41:33 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/23 21:53:17 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_print_space(int	a, t_qualfrs *ql)
+void	ft_print_space(int a, t_qualfrs *ql)
 {
-	while(a > 0)
+	while (a > 0)
 	{
 		write(1, &SPACE, 1);
 		a--;
@@ -22,9 +22,9 @@ void	ft_print_space(int	a, t_qualfrs *ql)
 	}
 }
 
-void	ft_print_zero(int	a, t_qualfrs *ql)
+void	ft_print_zero(int a, t_qualfrs *ql)
 {
-	while(a > 0)
+	while (a > 0)
 	{
 		write(1, &ZERO, 1);
 		a--;

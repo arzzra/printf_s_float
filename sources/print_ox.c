@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 11:26:24 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/21 19:38:39 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/23 21:48:40 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	ft_print_ox2(t_qualfrs *ql)
 	t_flag	*fl;
 
 	fl = ql->flg;
-	fl->sharp = (ql->typs == TYPES[5] && ql->prcs > ql->countnum
-	) ? 0 : fl->sharp;
+	fl->sharp = (ql->typs == TYPES[5] && ql->prcs > ql->countnum)
+	? 0 : fl->sharp;
 	if (ql->width > ql->countnum)
 	{
 		if (fl->minus)

@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:56:40 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/08/21 18:25:37 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:02:20 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_unsign_lenchoose2(t_qualfrs *ql)
 {
-	t_length		*ln;
-	unsigned long int	z;
+	t_length				*ln;
+	unsigned long int		z;
 	unsigned long long int	x;
 
 	ln = ql->len;
@@ -32,6 +32,7 @@ char	*ft_unsign_lenchoose2(t_qualfrs *ql)
 	else
 		return (NULL);
 }
+
 char	*ft_unsign_lenchoose(t_qualfrs *ql)
 {
 	t_length			*ln;
@@ -75,6 +76,7 @@ char	*ft_sign_lenchoose2(t_qualfrs *ql)
 	else
 		return (NULL);
 }
+
 char	*ft_sign_lenchoose(t_qualfrs *ql)
 {
 	t_length	*ln;
