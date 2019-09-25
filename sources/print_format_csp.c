@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 14:47:10 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/25 14:59:22 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:01:46 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,30 +65,25 @@ void	ft_print_char(t_qualfrs *ql)
 
 void	ft_print_str(t_qualfrs *ql)
 {
-	if (!(ql->num = va_arg(ql->ap, char*)))
-		ql->num = NULLPRINT;
-	ql->countnum = ft_strlen(ql->num);
-	ql->countnum = (ql->prcs >= 0 && ql->prcs < ql->countnum)
-	? ql->prcs : ql->countnum;
-	ql->countnum = ql->countnum > 0 ? ql->countnum : 0;
-	if (ql->width > 0)
+	if (ql->typs == TYPES[1])
 	{
-		if (ql->flg->minus > 0)
-		{
-			ft_print_str_uni(ql);
-			ft_print_space(ql->width - ql->countnum, ql);
-		}
-		else
-		{
-			if (ql->flg->zero)
-				ft_print_zero(ql->width - ql->countnum, ql);
-			else
-				ft_print_space(ql->width - ql->countnum, ql);
-			ft_print_str_uni(ql);
-		}
+		if (!(ql->num = va_arg(ql->ap, char*)))
+			ql->num = NULLPRINT;
+		ql->countnum = ft_strlen(ql->num);
+		ql->countnum = (ql->prcs >= 0 && ql->prcs < ql->countnum)
+		? ql->prcs : ql->countnum;
+		ql->countnum = ql->countnum > 0 ? ql->countnum : 0;
 	}
-	else
-		ft_print_str_uni(ql);
+	else if (ql->typs == TYPES[14])
+	{
+		if (!(ql->num = va_arg(ql->ap, char*)))
+			ql->num = NULLPRINT;
+		ql->countnum = ft_wstrlen(ql->num);
+		ql->countnum = (ql->prcs >= 0 && ql->prcs < ql->countnum)
+		? ql->prcs : ql->countnum;
+		ql->countnum = ql->countnum > 0 ? ql->countnum : 0;
+	}
+	ft_print_str2(ql);
 }
 
 void	ft_print_pointer2(t_qualfrs *ql)

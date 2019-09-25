@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 18:53:04 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/25 14:47:13 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/25 16:48:24 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_how_to_print(t_qualfrs *ql)
 	else if (ql->typs == TYPES[13])
 		ft_print_percent(ql);
 	else if (ql->typs == TYPES[0] || ql->typs == TYPES[1]
-	|| ql->typs == TYPES[2])
+	|| ql->typs == TYPES[2] || ql->typs == TYPES[14])
 	{
 		if (ql->typs == TYPES[0])
 			ft_print_char(ql);

@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 14:21:22 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/23 21:44:29 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:01:16 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,19 @@ int		ft_zd(char *frm, t_qualfrs *ql)
 
 void	ft_print_str_uni(t_qualfrs *ql)
 {
-	char			wr;
-	unsigned char	c2;
 	int				i;
+	wchar_t			*e;
 
 	if (ql->typs == TYPES[1])
 		ql->countchr += write(1, ql->num, ql->countnum);
-	else if (ql->typs == TYPES[15])
+	else if (ql->typs == TYPES[14])
 	{
-		i = -1;
-		while (++i < ql->countnum)
+		e = (wchar_t*)ql->num;
+		i = 0;
+		while (i < ql->countnum)
 		{
-			c2 = (unsigned char)ql->num[i];
-			if (c2 < 0)
-				continue ;
-			else if (c2 > 0x7F)
-			{
-				wr = (c2 >> 6) | 0xC0;
-				ql->countchr += write(1, &wr, 1);
-				wr = c2 & 0xbf;
-				ql->countchr += write(1, &wr, 1);
-			}
-			else
-				ql->countchr += write(1, &c2, 1);
+			ft_printwchar(e[i], ql);
+			i++;
 		}
 	}
 }
