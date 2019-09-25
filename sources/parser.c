@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 14:45:01 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/23 19:07:52 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/25 14:53:20 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		ft_precision(char *frm, t_qualfrs *ql)
 		else
 		{
 			ql->prcs = ft_atoi(&(frm)[i]);
-			while (ql->prcs > 0 && frm[i] >= '0' && frm[i] <= '9')
+			while (ql->prcs >= 0 && frm[i] >= '0' && frm[i] <= '9')
 				i++;
 			return (i);
 		}
@@ -84,35 +84,31 @@ int		ft_precision(char *frm, t_qualfrs *ql)
 
 int		ft_length(char *frm, t_qualfrs *ql)
 {
-	t_length	*len;
-
-	len = ql->len;
 	if (*frm == 'l')
 	{
-		if (!len->h && !len->l && !len->L)
+		if (!ql->len->h && !ql->len->l && !ql->len->L)
 		{
-			len->l = (frm[1] == 'l') ? 2 : 1;
-			return (len->l);
+			ql->len->l = (frm[1] == 'l') ? 2 : 1;
+			return (ql->len->l);
 		}
-		return(1);
+		return (1);
 	}
 	else if (*frm == 'h')
 	{
-		if (!len->h && !len->l && !len->L)
+		if (!ql->len->h && !ql->len->l && !ql->len->L)
 		{
-			len->h = (frm[1] == 'h') ? len->h + 2 : 1;
-			return (len->h);
+			ql->len->h = (frm[1] == 'h') ? ql->len->h + 2 : 1;
+			return (ql->len->h);
 		}
-		return(1);
+		return (1);
 	}
 	else if (*frm == 'L')
 	{
-		if (!len->h && !len->l && !len->L)
-			len->L = 1;
+		if (!ql->len->h && !ql->len->l && !ql->len->L)
+			ql->len->L = 1;
 		return (1);
 	}
-	else
-		return (0);
+	return (0);
 }
 
 char	*ft_types(char *frm, t_qualfrs *ql)

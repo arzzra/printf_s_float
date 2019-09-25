@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 14:47:10 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/21 16:03:47 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/25 14:59:22 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ char	*ft_print_format(char *as, t_qualfrs *qual)
 	{
 		str = ft_strncpy(ft_strnew(r), as, r);
 		qual->countchr += write(1, str, r);
-		free (str);
+		free(str);
 		return (++sa);
 	}
 	sa++;
 	return (sa);
 }
-
 
 void	ft_print_char(t_qualfrs *ql)
 {
@@ -54,13 +53,13 @@ void	ft_print_char(t_qualfrs *ql)
 		{
 			c = va_arg(ql->ap, int);
 			ft_print_space(ql->width - 1, ql);
-			ql->countchr += write (1, &c, 1);
+			ql->countchr += write(1, &c, 1);
 		}
 	}
 	else
 	{
 		c = va_arg(ql->ap, int);
-		ql->countchr += write (1, &c, 1);
+		ql->countchr += write(1, &c, 1);
 	}
 }
 
@@ -69,7 +68,7 @@ void	ft_print_str(t_qualfrs *ql)
 	if (!(ql->num = va_arg(ql->ap, char*)))
 		ql->num = NULLPRINT;
 	ql->countnum = ft_strlen(ql->num);
-	ql->countnum = (ql->prcs >= 0  && ql->prcs < ql->countnum)
+	ql->countnum = (ql->prcs >= 0 && ql->prcs < ql->countnum)
 	? ql->prcs : ql->countnum;
 	ql->countnum = ql->countnum > 0 ? ql->countnum : 0;
 	if (ql->width > 0)
@@ -106,19 +105,7 @@ void	ft_print_pointer2(t_qualfrs *ql)
 			ql->countchr += write(1, ql->num, ql->countnum);
 			ft_print_space(ql->width - ql->countnum - 2, ql);
 		}
-		else if (fl->zero && ql->prcs == -1)
-		{
-			ql->countchr += write(1, &ADDRESS, 2);
-			ft_print_zero(ql->width - ql->countnum - 2, ql);
-			ql->countchr += write(1, ql->num, ql->countnum);
-		}
-		else
-		{
-			ft_print_space(ql->width - ql->countnum - 2, ql);
-			ql->countchr += write(1, &ADDRESS, 2);
-			ft_print_zero(ql->prcs - ql->countnum, ql);
-			ql->countchr += write(1, ql->num, ql->countnum);
-		}
+		ft_print_pointer2_1(ql);
 	}
 	else
 	{
@@ -130,10 +117,10 @@ void	ft_print_pointer2(t_qualfrs *ql)
 
 void	ft_print_pointer(t_qualfrs *ql)
 {
-	char	*poin;
-	unsigned long long tr;
-	unsigned long long rt;
-	int		i;
+	char				*poin;
+	unsigned long long	tr;
+	unsigned long long	rt;
+	int					i;
 
 	i = 1;
 	poin = va_arg(ql->ap, char*);
@@ -147,7 +134,7 @@ void	ft_print_pointer(t_qualfrs *ql)
 	ql->countnum = i;
 	while (--i >= 0)
 	{
-		ql->num[i] = (rt % 16 < 10) ? rt % 16 +'0' : rt % 16 - 10 + 'a';
+		ql->num[i] = (rt % 16 < 10) ? rt % 16 + '0' : rt % 16 - 10 + 'a';
 		rt /= 16;
 	}
 	ft_print_pointer2(ql);

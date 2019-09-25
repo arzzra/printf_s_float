@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 19:22:54 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/23 21:36:57 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/25 14:59:42 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,6 +309,7 @@ char		*ft_10_to_16(unsigned long long x, t_qualfrs *ql);
 void		ft_search_syntax(char *format, t_qualfrs *qual);
 void		ft_print_pointer(t_qualfrs *ql);
 void		ft_print_pointer2(t_qualfrs *ql);
+void		ft_print_pointer2_1(t_qualfrs *ql);
 void		ft_print_str(t_qualfrs *ql);
 void		ft_print_char(t_qualfrs *ql);
 char		*ft_print_format(char *as, t_qualfrs *qual);

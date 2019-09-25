@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:53:02 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/23 21:40:05 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/25 15:01:58 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static	void	print_bits2(void *ptr, char *frac)
 	}
 }
 
-static void	ft_print_nan_inf(t_qualfrs *ql, int f)
+static	void	ft_print_nan_inf(t_qualfrs *ql, int f)
 {
 	if (f == 1)
 	{
@@ -59,7 +59,7 @@ static void	ft_print_nan_inf(t_qualfrs *ql, int f)
 	}
 }
 
-int		ft_inf_nan(t_qualfrs *ql)
+int				ft_inf_nan(t_qualfrs *ql)
 {
 	int		i;
 	char	s_int[81];
@@ -86,4 +86,24 @@ int		ft_inf_nan(t_qualfrs *ql)
 		return (1);
 	}
 	return (0);
+}
+
+void			ft_print_pointer2_1(t_qualfrs *ql)
+{
+	t_flag	*fl;
+
+	fl = ql->flg;
+	if (fl->zero && ql->prcs == -1)
+	{
+		ql->countchr += write(1, &ADDRESS, 2);
+		ft_print_zero(ql->width - ql->countnum - 2, ql);
+		ql->countchr += write(1, ql->num, ql->countnum);
+	}
+	else
+	{
+		ft_print_space(ql->width - ql->countnum - 2, ql);
+		ql->countchr += write(1, &ADDRESS, 2);
+		ft_print_zero(ql->prcs - ql->countnum, ql);
+		ql->countchr += write(1, ql->num, ql->countnum);
+	}
 }
