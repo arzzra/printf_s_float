@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 15:07:41 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/08/21 19:05:12 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/26 19:14:04 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,27 @@ void	ft_print_u2(t_qualfrs *ql)
 	t_flag *fl;
 
 	fl = ql->flg;
-	if (fl->minus)
+	if (ql->width > ql->countnum)
 	{
-		ft_print_u_1(ql);
+		if (fl->minus)
+			ft_print_u_1(ql);
+		else
+		{
+			if (fl->zero && ql->prcs == -1)
+				ft_print_u_2(ql);
+			else
+				ft_print_u_3(ql);
+		}
 	}
 	else
 	{
-		if (fl->zero && ql->prcs == -1)
-			ft_print_u_2(ql);
+		if (ql->prcs > ql->countnum)
+		{
+			ft_print_zero((ql->prcs - ql->countnum), ql);
+			ql->countchr += write(1, ql->num, ql->countnum);
+		}
 		else
-			ft_print_u_3(ql);
+			ql->countchr += write(1, ql->num, ql->countnum);
 	}
 }
 
@@ -88,17 +99,6 @@ void	ft_print_u(t_qualfrs *ql)
 		&(ql->countnum));
 	}
 	ql->countnum = (!ql->prcs && ql->num[0] == '0') ? 0 : ql->countnum;
-	if (ql->width > ql->countnum)
-		ft_print_u2(ql);
-	else
-	{
-		if (ql->prcs > ql->countnum)
-		{
-			ft_print_zero((ql->prcs - ql->countnum), ql);
-			ql->countchr += write(1, ql->num, ql->countnum);
-		}
-		else
-			ql->countchr += write(1, ql->num, ql->countnum);
-	}
+	ft_print_u2(ql);
 	free(ql->num);
 }

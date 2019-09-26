@@ -6,21 +6,19 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:53:02 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/25 15:01:58 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/26 20:34:59 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static	void	print_bits2(void *ptr, char *frac)
+void	print_bits2(void *ptr, char *frac, int i)
 {
 	unsigned char	*b;
 	unsigned char	byte;
-	int				i;
 	int				j;
 
 	b = (unsigned char*)ptr;
-	i = 9;
 	j = 7;
 	while (i >= 0)
 	{
@@ -64,7 +62,7 @@ int				ft_inf_nan(t_qualfrs *ql)
 	int		i;
 	char	s_int[81];
 
-	print_bits2((void*)&(ql->ld->d), s_int);
+	print_bits2((void*)&(ql->ld->d), s_int, 9);
 	s_int[80] = '\0';
 	i = 1;
 	while (s_int[i] == '1' && i < 16)

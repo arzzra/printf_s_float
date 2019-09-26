@@ -6,7 +6,7 @@
 #    By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/16 16:33:59 by cdemetra          #+#    #+#              #
-#    Updated: 2019/09/25 16:43:43 by cdemetra         ###   ########.fr        #
+#    Updated: 2019/09/26 21:09:35 by cdemetra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SOURCES = ft_printf.c convercions.c length.c\
 		save_frac_part.c fill_res.c long_operation.c\
 		div_mod_l.c div_mod_l_2.c convert_mantiss.c print_int_part.c\
 		buffer.c start.c convert_bin_frac_part.c\
-		itoa2.c print_g.c
+		itoa2.c print_g.c print_b.c\
 
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))

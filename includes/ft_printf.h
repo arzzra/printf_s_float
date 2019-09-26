@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 19:22:54 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/25 16:58:42 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/26 20:34:37 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <string.h>
 
 # include <stdio.h>
-# define TYPES "cspdiouxXegfC%S"
+# define TYPES "cspdiouxXegfC%Sb"
 # define ALLFLG "#0-+ "
 # define SPACE " "
 # define ADDRESS "0x"
@@ -329,4 +329,6 @@ void	ft_print_percent(t_qualfrs *ql);
 void	ft_print_str_uni(t_qualfrs *ql);
 
 int		ft_inf_nan(t_qualfrs *ql);
+void	print_bits2(void *ptr, char *frac, int i);
+void	ft_print_b(t_qualfrs *ql);
 #endif

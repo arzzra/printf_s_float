@@ -6,7 +6,7 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 18:53:04 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/25 16:48:24 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/26 20:34:37 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_how_to_print2(t_qualfrs *ql)
 	else if (ql->typs == TYPES[11] ||
 	ql->typs == TYPES[10] || ql->typs == TYPES[9])
 		ft_print_floats(ql);
+	else if (ql->typs == TYPES[15])
+		ft_print_b(ql);
 	return ;
 }
 
