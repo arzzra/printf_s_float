@@ -6,13 +6,13 @@
 /*   By: cdemetra <cdemetra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:53:02 by cdemetra          #+#    #+#             */
-/*   Updated: 2019/09/26 20:34:59 by cdemetra         ###   ########.fr       */
+/*   Updated: 2019/09/27 15:49:44 by cdemetra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_bits2(void *ptr, char *frac, int i)
+void			print_bits2(void *ptr, char *frac, int i)
 {
 	unsigned char	*b;
 	unsigned char	byte;
